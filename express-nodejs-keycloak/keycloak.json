@@ -1,0 +1,11 @@
+{
+  "realm": "giq",
+  "auth-server-url": "http://localhost:8080/auth/",
+  "ssl-required": "external",
+  "resource": "nodejs",
+  "credentials": {
+    "secret": "e317efde-5d03-4afb-8c33-f6d97e65f952"
+  },
+  "confidential-port": 0,
+  "policy-enforcer": {}
+}
