@@ -15,7 +15,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 })
 export class CourseComponent implements OnInit {
 
-  course$: Observable<Course>;
+  course$: Observable<any>;
 
   lessons$: Observable<Lesson[]>;
 

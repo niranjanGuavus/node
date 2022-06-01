@@ -9,18 +9,17 @@ import { CoursesRepository } from "../repository/courses.repository";
 @Controller()
 export class CourseController {
 
-  constructor(private coursesDB:CoursesRepository) {
-    console.log("controller created", this.coursesDB);
-  }
-  // constructor(@InjectModel('Course') private courseModel: Model <Course>) {
-  //   console.log("controller created");
-
+  // constructor(private coursesDB:CoursesRepository) {
+  //   console.log("controller created", this.coursesDB);
   // }
+  constructor(@InjectModel('Course') private courseModel: Model <Course>) {
+    console.log("controller created");
+
+  }
   
   
   @Get('/api/hello-world')
   async helloWorld(): Promise<string> {
-    console.log("controller instance", this.coursesDB);
     return "hello World";
   }
 
@@ -41,8 +40,8 @@ export class CourseController {
   //   }
   // }
 
-  // @Get('/api/courses')
-  // async findCourses(): Promise<Course[]> {
-  //     return this.courseModel.find();
-  // }
+  @Get('/api/courses')
+  async findCourses(): Promise<Course[]> {
+      return this.courseModel.find();
+  }
 }
