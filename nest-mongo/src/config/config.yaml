@@ -1,0 +1,10 @@
+app:
+  port: 8080
+
+db:
+  mongo:
+    host: 'nwdaf003.cloud.in.guavus.com'
+    port: 27017
+    userName: 'nwdaf'
+    password: 'nwdaf@12#'
+    database: 'nwdaf_ui'

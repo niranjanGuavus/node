@@ -7,7 +7,7 @@ import { Course } from 'shared/course';
 @Injectable()
 export class CourseService {
 
-    constructor(@InjectModel('Course') private courseModel: Model<Course>){
+    constructor(@InjectModel('angCourse') private courseModel: Model<Course>){
     }
 
     async addCourse(course: Partial<Course>): Promise<Course>{
@@ -19,7 +19,7 @@ export class CourseService {
     }
 
     async findAll(): Promise<Course[]> {
-        return this.courseModel.find().exec();
+        return this.courseModel.find().limit(2).exec();
     }
 
     async updateCourse(courseId:string, changes: Partial<Course>): Promise<Course> {

@@ -1,11 +1,12 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MONGO_CONNECTION } from './constants';
+import { CourseModule } from './course/course.module';
+import { ResponseTimeMiddleware } from './middleware/response-time.middleware';
 import { NfloadModule } from './nfload/nfload.module';
 import { SliceloadModule } from './sliceload/sliceload.module';
-import { CourseModule } from './course/course.module';
 
 @Module({
   imports: [
@@ -14,4 +15,9 @@ import { CourseModule } from './course/course.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(ResponseTimeMiddleware)
+      .forRoutes('*');
+  }
+}
